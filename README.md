@@ -32,6 +32,9 @@ Accompanied by a smart and dynamic navigation bar which gets updated as per sect
 
 - A contemporary web browser such as Chrome or Firefox or Edge.
 
+## Credits
+
+- Developed as part of the Udacity Front End Web Developer Nanodegree program.
 
 ## License
 This project is released under the MIT License. 
