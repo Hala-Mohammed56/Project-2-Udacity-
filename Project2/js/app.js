@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   const navbar = document.getElementById("navbar");
 
+  
   // Dynamically Menu
   sections.forEach((section) => {
     const navItem = document.createElement("li");
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Select all nav links
   const navLinks = document.querySelectorAll(".navbar a");
 
+  
   // Highlight active section and link 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -37,15 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  // Observe the sections
+  // Observe each section
   sections.forEach((section) => observer.observe(section));
 
+  
   // Smooth scroll 
   navbar.addEventListener("click", (event) => {
     if (event.target.tagName === "A") {
-      event.preventDefault(); 
-      const targetSection = document.querySelector(event.target.getAttribute("href"));
-      targetSection.scrollIntoView({ behavior: "smooth" });
+      event.preventDefault();
+      const targetId = event.target.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+
+      const headerHeight = document.querySelector("header").offsetHeight;
+      const offsetPosition = targetSection.offsetTop - headerHeight;
+
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   });
 });
