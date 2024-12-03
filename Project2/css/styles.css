@@ -76,6 +76,7 @@ header {
   max-width: 1200px;
   text-align: center;
   border-radius: 10px;
+  height: 100vh;
 }
 
 .section h1 {
@@ -104,6 +105,8 @@ footer {
   font-weight: bold;
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 0px;
+ 
 }
 
 footer a {
@@ -147,19 +150,8 @@ table tr:hover {
   background-color: #f1f1f1;
 }
 
-video {
-  display: block;
-  margin: 20px auto;
-  width: 80%;
-  max-width: 800px;
-  border-radius: 10px;
-  border: 2px solid #4B6E68;
-}
 
-video:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease-in-out;
-}
+
 
 @media (max-width: 1024px) {
   body {
@@ -206,10 +198,7 @@ video:hover {
     display: block;
   }
 
-  video {
-    width: 90%;
-    margin: 10px auto;
-  }
+
 
   table th, table td {
     font-size: 14px;
@@ -285,10 +274,7 @@ video:hover {
     margin: 10px 0;
   }
 
-  video {
-    width: 100%;
-    margin: 10px auto;
-  }
+
 
   table th, table td {
     font-size: 12px;
@@ -360,9 +346,7 @@ video:hover {
     width: 100%;
   }
 
-  video {
-    width: 100%;
-  }
+
     .section h1 {
         font-size: 24px;
     }
