@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   const navbar = document.getElementById("navbar");
 
-  
   // Dynamically Menu
   sections.forEach((section) => {
     const navItem = document.createElement("li");
@@ -18,31 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // Select all nav links
   const navLinks = document.querySelectorAll(".navbar a");
 
-  
   // Highlight active section and link 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("your-active-class");
+  const highlightSectionInView = () => {
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect(); //position of the sec
+      const headerHeight = document.querySelector("header").offsetHeight;
 
-          navLinks.forEach((link) => link.classList.remove("active"));
-          const activeLink = document.querySelector(`.navbar a[href="#${entry.target.id}"]`);
-          if (activeLink) activeLink.classList.add("active");
-        } else {
-          entry.target.classList.remove("your-active-class");
-        }
-      });
-    },
-    {
-      threshold: 0.5, 
-    }
-  );
+      if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+        // Highlight the visible section
+        sections.forEach((sec) => sec.classList.remove("your-active-class"));
+        section.classList.add("your-active-class");
 
-  // Observe each section
-  sections.forEach((section) => observer.observe(section));
+        // Update the active link in the navbar
+        navLinks.forEach((link) => link.classList.remove("active"));
+        const activeLink = document.querySelector(`.navbar a[href="#${section.id}"]`);
+        if (activeLink) activeLink.classList.add("active");
+      }
+    });
+  };
 
-  
+  // Add scroll event listener to detect the active section
+  window.addEventListener("scroll", highlightSectionInView);
+
   // Smooth scroll 
   navbar.addEventListener("click", (event) => {
     if (event.target.tagName === "A") {
